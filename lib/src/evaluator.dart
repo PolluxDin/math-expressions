@@ -21,6 +21,8 @@ class ContextModel {
   /// The parent scope.
   ContextModel? parentScope;
 
+  bool usingRadius = true;
+
   /// Variable map of this scope (name -> expression).
   Map<String, Expression> variables = <String, Expression>{};
 

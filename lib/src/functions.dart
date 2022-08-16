@@ -601,7 +601,10 @@ class Sin extends DefaultFunction {
       if ((argEval / math.pi).abs() % 1 == 0) {
         return 0.0;
       }
-      return math.sin(argEval);
+
+      return context.usingRadius
+          ? math.sin(argEval)
+          : math.sin(argEval * math.pi / 180);
     }
 
     if (type == EvaluationType.VECTOR) {
