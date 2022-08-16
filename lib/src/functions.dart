@@ -656,7 +656,9 @@ class Cos extends DefaultFunction {
       if (((argEval - math.pi / 2) / math.pi).abs() % 1 == 0) {
         return 0.0;
       }
-      return math.cos(argEval);
+      return context.usingRadius
+          ? math.cos(argEval)
+          : math.cos(argEval * math.pi / 180);
     }
 
     if (type == EvaluationType.VECTOR) {
@@ -707,7 +709,9 @@ class Tan extends DefaultFunction {
       if ((argEval / math.pi).abs() % 1 == 0) {
         return 0.0;
       }
-      return math.tan(argEval);
+      return context.usingRadius
+          ? math.tan(argEval)
+          : math.tan(argEval * math.pi / 180);
     }
 
     if (type == EvaluationType.VECTOR) {
@@ -745,7 +749,10 @@ class Asin extends DefaultFunction {
     final dynamic argEval = arg.evaluate(type, context);
 
     if (type == EvaluationType.REAL) {
-      return math.asin(argEval);
+      // return math.asin(argEval);
+      return context.usingRadius
+          ? math.asin(argEval)
+          : math.asin(argEval) / math.pi * 180;
     }
 
     // TODO VECTOR and INTERVAL evaluation
@@ -776,7 +783,10 @@ class Acos extends DefaultFunction {
     final dynamic argEval = arg.evaluate(type, context);
 
     if (type == EvaluationType.REAL) {
-      return math.acos(argEval);
+      // return math.acos(argEval);
+      return context.usingRadius
+          ? math.acos(argEval)
+          : math.acos(argEval) / math.pi * 180;
     }
 
     // TODO VECTOR and INTERVAL evaluation
@@ -807,7 +817,10 @@ class Atan extends DefaultFunction {
     final dynamic argEval = arg.evaluate(type, context);
 
     if (type == EvaluationType.REAL) {
-      return math.atan(argEval);
+      // return math.atan(argEval);
+      return context.usingRadius
+          ? math.atan(argEval)
+          : math.atan(argEval) / math.pi * 180;
     }
 
     // TODO VECTOR and INTERVAL evaluation
